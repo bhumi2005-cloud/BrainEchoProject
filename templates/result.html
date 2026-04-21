@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainEcho Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="result-body">
+    <div class="container">
+        <div class="top-bar">
+            <div>
+                <h1>🧠 BrainEcho Plan for {{ result.name }}</h1>
+                <p class="muted">Profession: {{ result.profession }}</p>
+            </div>
+            <a href="/" class="btn-secondary">← Back</a>
+        </div>
+
+        <div class="summary-grid">
+            <div class="card">
+                <h2>Best Working Hours</h2>
+                <ul class="tag-list">
+                    {% for hour in result.top_hours %}
+                        <li>{{ hour }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Main Goal</h2>
+                <p>{{ result.goals if result.goals else "No goal entered" }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Today's Recommended Plan</h2>
+            <div class="task-list">
+                {% for item in result.today_plan %}
+                    <div class="task-item">
+                        <div>
+                            <h3>{{ item.task }}</h3>
+                            <p>Type: {{ item.task_type|capitalize }}</p>
+                        </div>
+                        <div class="task-time">
+                            {{ item.recommended_time }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>7-Day Weekly Plan</h2>
+            <div class="week-grid">
+                {% for day in result.weekly_plan %}
+                    <div class="day-card">
+                        <h3>{{ day.day }}</h3>
+                        {% for t in day.tasks %}
+                            <div class="mini-task">
+                                <strong>{{ t.title }}</strong>
+                                <p>{{ t.time }} • {{ t.type|capitalize }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>AI Advice</h2>
+            <ul class="advice-list">
+                {% for advice in result.ai_advice %}
+                    <li>{{ advice }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Hourly Productivity Forecast</h2>
+            <div class="chart-wrap">
+                {% for item in result.productivity_chart %}
+                    <div class="chart-row">
+                        <div class="chart-label">{{ item.label }}</div>
+                        <div class="bar-area">
+                            <div class="bar" style="width: {{ item.score }}%"></div>
+                        </div>
+                        <div class="score">{{ item.score }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

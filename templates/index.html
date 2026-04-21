@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainEcho - Smart Work Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="container hero-content">
+            <div class="brand">🧠 BrainEcho</div>
+            <h1>Your AI Productivity Planner</h1>
+            <p class="subtitle">
+                Confused about what to do, when to do it, and how much time to give?
+                BrainEcho creates your smart daily and weekly work plan.
+            </p>
+
+            <div class="card form-card">
+                <form action="/plan" method="POST">
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" placeholder="Enter your name">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Profession</label>
+                            <select name="profession" required>
+                                <option value="student">Student</option>
+                                <option value="employee">Employee</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Sleep Hours</label>
+                            <input type="number" step="0.5" min="0" max="12" name="sleep_hours" value="7" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Energy Level (1-10)</label>
+                            <input type="number" min="1" max="10" name="energy_level" value="7" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Stress Level (1-10)</label>
+                            <input type="number" min="1" max="10" name="stress_level" value="5" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Focus Level (1-10)</label>
+                            <input type="number" min="1" max="10" name="focus_level" value="7" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Wake Time</label>
+                            <input type="time" name="wake_time" value="07:00" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Work/Study Start Time</label>
+                            <input type="time" name="work_start" value="09:00" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Work/Study End Time</label>
+                            <input type="time" name="work_end" value="18:00" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Days Available For Planning</label>
+                            <input type="number" min="1" max="7" name="days_available" value="7" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Deadline Pressure (1-10)</label>
+                            <input type="number" min="1" max="10" name="deadline_pressure" value="5" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Break Preference</label>
+                            <select name="break_preference">
+                                <option value="short">Short breaks</option>
+                                <option value="medium" selected>Medium breaks</option>
+                                <option value="long">Long breaks</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Main Goals</label>
+                        <textarea name="goals" rows="3" placeholder="Example: Crack exam, finish office report, complete syllabus, improve teaching prep"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Tasks (comma separated)</label>
+                        <textarea name="tasks" rows="4" placeholder="Example: study DSA, finish assignment, revise OS, prepare presentation, email manager"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Generate My Smart Plan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

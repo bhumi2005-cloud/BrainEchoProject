@@ -1,0 +1,18 @@
+{
+    "entries": [
+        {
+            "timestamp": "2026-04-21 14:06:49",
+            "name": "bhumika",
+            "task": "daily routine",
+            "task_type": "Coding",
+            "duration": 4,
+            "energy": 3,
+            "focus": 1,
+            "completed": "No",
+            "mood": "Low",
+            "notes": "give me the best time",
+            "hour": 14,
+            "productivity_score": 4.13
+        }
+    ]
+}
